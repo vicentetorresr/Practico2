@@ -1,4 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using Practico2.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<EjemploDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
 
 // Add services to the container.
 
