@@ -27,14 +27,14 @@ namespace Practico2.Services
 
             if (usuarioExistente != null)
             {
-                throw new InvalidOperationException("El email ya está registrado.");
+                throw new InvalidOperationException("\nEl email ya está registrado.\n\n\n\n\n\n\n\n\n\n");
             }
 
             // Verificar que el RolId exista en la tabla Roles
             var rolExistente = await _dbContext.Roles.FindAsync(usuarioDTO.RolId);
             if (rolExistente == null)
             {
-                throw new InvalidOperationException("El RolId no existe.");
+                throw new InvalidOperationException("\nEl RolId no existe.\n\n\n\n\n\n\n\n\n\n");
             }
 
             // Crear un nuevo objeto Usuario basado en el DTO
