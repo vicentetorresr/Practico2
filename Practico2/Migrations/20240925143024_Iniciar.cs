@@ -138,6 +138,30 @@ namespace Practico2.Migrations
                 table: "Roles",
                 columns: new[] { "Id", "Nombre" },
                 values: new object[] { 2, "Empleado" });
+
+            // Insertar datos iniciales en Usuarios
+            migrationBuilder.InsertData(
+                table: "Usuarios",
+                columns: new[] { "Id", "Nombre", "Apellido", "Email", "Password", "RolId" },
+                values: new object[] { 1, "Juan", "Pérez", "juan.perez@example.com", "contraseña123", 1 });
+
+            migrationBuilder.InsertData(
+                table: "Usuarios",
+                columns: new[] { "Id", "Nombre", "Apellido", "Email", "Password", "RolId" },
+                values: new object[] { 2, "Ana", "García", "ana.garcia@example.com", "contraseña456", 2 });
+
+            // Insertar datos iniciales en Herramientas
+            migrationBuilder.InsertData(
+                table: "Herramientas",
+                columns: new[] { "Id", "Nombre" },
+                values: new object[] { 1, "Destornillador" });
+
+            migrationBuilder.InsertData(
+                table: "Herramientas",
+                columns: new[] { "Id", "Nombre" },
+                values: new object[] { 2, "Martillo" });
+
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
