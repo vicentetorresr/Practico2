@@ -30,6 +30,13 @@ namespace Practico2.Services
                 throw new InvalidOperationException("El email ya está registrado.");
             }
 
+            // Verificar que el RolId exista en la tabla Roles
+            var rolExistente = await _dbContext.Roles.FindAsync(usuarioDTO.RolId);
+            if (rolExistente == null)
+            {
+                throw new InvalidOperationException("El RolId no existe.");
+            }
+
             // Crear un nuevo objeto Usuario basado en el DTO
             var nuevoUsuario = new Usuario
             {
@@ -66,6 +73,13 @@ namespace Practico2.Services
             if (usuarioExistente == null)
             {
                 return false; // El usuario no existe
+            }
+
+            // Verificar que el RolId exista en la tabla Roles
+            var rolExistente = await _dbContext.Roles.FindAsync(usuarioDTO.RolId);
+            if (rolExistente == null)
+            {
+                throw new InvalidOperationException("El RolId no existe.");
             }
 
             // Actualizar los campos del usuario basado en el DTO
