@@ -18,3 +18,17 @@ namespace Practico2.Models
     }
 }
 
+/*
+ Gestión de usuarios
+Propiedades a tener en cuenta:
+
+Id: int, autoincrementable
+Nombre: str
+Email: str
+Password: str
+Rol: id (FK roles)
+
+•	Los endpoints a tener en cuenta son los relativos al CRUD.
+•	Debe controlar que no se ingrese un usuario con un rol no existente
+
+ */

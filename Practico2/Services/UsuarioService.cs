@@ -104,19 +104,5 @@ namespace Practico2.Services
                 .Where(u => u.RolId == rolId)
                 .ToListAsync();
         }
-
-        // Autenticación de usuario
-        public async Task<Usuario> AutenticarUsuarioAsync(string email, string password)
-        {
-            var usuario = await _dbContext.Usuarios
-                .FirstOrDefaultAsync(u => u.Email == email && u.Password == password);
-
-            if (usuario == null)
-            {
-                throw new UnauthorizedAccessException("Credenciales inválidas.");
-            }
-
-            return usuario;
-        }
     }
 }
