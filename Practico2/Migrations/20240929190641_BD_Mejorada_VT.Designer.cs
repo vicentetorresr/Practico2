@@ -12,8 +12,8 @@ using Practico2.Data;
 namespace Practico2.Migrations
 {
     [DbContext(typeof(EjemploDbContext))]
-    [Migration("20240925143410_EjemploBd")]
-    partial class EjemploBd
+    [Migration("20240929190641_BD_Mejorada_VT")]
+    partial class BD_Mejorada_VT
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,57 @@ namespace Practico2.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("Practico2.Models.Herramientas", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Herramientas");
+                });
+
+            modelBuilder.Entity("Practico2.Models.Proyecto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("HorasTotales")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HorasTrabajadas")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Proyectos");
+                });
 
             modelBuilder.Entity("Practico2.Models.Rol", b =>
                 {
@@ -115,23 +166,27 @@ namespace Practico2.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RolId");
-
                     b.ToTable("Usuarios");
-                });
 
-            modelBuilder.Entity("Practico2.Models.Usuario", b =>
-                {
-                    b.HasOne("Practico2.Models.Rol", null)
-                        .WithMany("Usuarios")
-                        .HasForeignKey("RolId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Practico2.Models.Rol", b =>
-                {
-                    b.Navigation("Usuarios");
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Apellido = "Perez",
+                            Email = "juan@juan.cl",
+                            Nombre = "Juan",
+                            Password = "1234",
+                            RolId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Apellido = "Perez",
+                            Email = "pedro@pedro.cl",
+                            Nombre = "Pedro",
+                            Password = "1234",
+                            RolId = 2
+                        });
                 });
 #pragma warning restore 612, 618
         }

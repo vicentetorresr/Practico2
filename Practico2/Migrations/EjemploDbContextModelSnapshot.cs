@@ -164,23 +164,27 @@ namespace Practico2.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RolId");
-
                     b.ToTable("Usuarios");
-                });
 
-            modelBuilder.Entity("Practico2.Models.Usuario", b =>
-                {
-                    b.HasOne("Practico2.Models.Rol", null)
-                        .WithMany("Usuarios")
-                        .HasForeignKey("RolId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Practico2.Models.Rol", b =>
-                {
-                    b.Navigation("Usuarios");
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Apellido = "Perez",
+                            Email = "juan@juan.cl",
+                            Nombre = "Juan",
+                            Password = "1234",
+                            RolId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Apellido = "Perez",
+                            Email = "pedro@pedro.cl",
+                            Nombre = "Pedro",
+                            Password = "1234",
+                            RolId = 2
+                        });
                 });
 #pragma warning restore 612, 618
         }
