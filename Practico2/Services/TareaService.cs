@@ -41,8 +41,8 @@ namespace Practico2.Services
             // Crear un nuevo objeto Tarea basado en el DTO
             var nuevaTarea = new Tarea
             {
-                FechaInicio = DateTime.Now, // Puedes cambiar esto si necesitas una fecha específica
-                Estado = "Pendiente", // Estado inicial
+                FechaInicio = DateTime.Now,
+                Estado = "Pendiente", 
                 Horas = tareaDTO.Horas,
                 Area = tareaDTO.Area,
                 ProyectoId = tareaDTO.IdProyecto,
