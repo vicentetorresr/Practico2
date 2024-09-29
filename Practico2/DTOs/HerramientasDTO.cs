@@ -2,5 +2,6 @@
 {
     public class HerramientasDTO
     {
+        public string Nombre { get; set; }
     }
 }

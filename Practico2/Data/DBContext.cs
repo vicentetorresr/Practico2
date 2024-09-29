@@ -28,8 +28,7 @@ namespace Practico2.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            //Acá se pueden cargar los datos iniciales de la base de datos
-
+            // Datos iniciales para Roles
             modelBuilder.Entity<Rol>().HasData(new Rol
             {
                 Id = 1,
@@ -40,6 +39,28 @@ namespace Practico2.Data
             {
                 Id = 2,
                 Nombre = "Empleado"
+            });
+
+
+            // Datos iniciales para Usuarios
+            modelBuilder.Entity<Usuario>().HasData(new Usuario
+            {
+                Id = 1,
+                Nombre = "Juan",
+                Apellido = "Perez",
+                Email = "juan@juan.cl",
+                Password = "1234",
+                RolId = 1
+            });
+
+            modelBuilder.Entity<Usuario>().HasData(new Usuario
+            {
+                Id = 2,
+                Nombre = "Pedro",
+                Apellido = "Perez",
+                Email = "pedro@pedro.cl",
+                Password = "1234",
+                RolId = 2
             });
 
         }
